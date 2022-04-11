@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   homepage
+{% endblock %}
+
+
+{% block main %}
+<table class = "table  table-success table-striped">
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for info in stock_info%}
+        <tr>
+            <td>{{info.symbol}}</td>
+            <td>{{info.stockname}}</td>
+            <td>{{info.shares}}</td>
+            <td>{{stockprice[info.symbol]|usd}}</td>
+            <td>{{((stockprice[info.symbol] * info.shares )|round)|usd}}</td>
+        </tr>
+        {%endfor%}
+       
+    </tbody>
+</table>
+<table>
+   
+</table>
+<div class="account">
+    <p><b>CASH:</b>{{user_info.cash|usd}}</p>
+    <p><b>TOTAL BALANCE:</b>{{(total_stock_value + user_info.cash)|usd}}</p>
+    
+</div>
+{% endblock %}

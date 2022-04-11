@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   Sell
+{% endblock %}
+
+{% block main %}
+    <form action="/sell" method="post">
+       <select autofocus class = "mb-3  selecter" name ="symbol">
+        <option  disabled selected value="">Stock</option>
+           {%for info in stocks%}
+                <option class = "form-control mx-auto w-auto" value= {{info.symbol}}>{{info.symbol}}</option>
+           {%endfor%}
+       </select>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="shares" name="shares" placeholder="Enter Shares" type="number">
+        </div>
+        <input type ="hidden" value = "{{userid}}" name = "userid">
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+{% endblock %}

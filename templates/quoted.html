@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   Quoted
+{% endblock %}
+
+
+{% block main %}
+<table class = "table  table-success table-striped">
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%if stock_info%}
+            <tr>
+                <td>{{stock_info.symbol}}</td>
+                <td>{{stock_info.name}}</td>
+                <td>{{stock_info.price|usd}}</td>
+            </tr>
+        {%endif%}
+    </tbody>
+</table>
+{% endblock %}
